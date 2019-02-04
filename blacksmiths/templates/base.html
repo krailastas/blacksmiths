@@ -1,0 +1,384 @@
+{% load static %}
+{% load thumbnail %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>{{ main.title }}</title>
+	<link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet" media="all">
+	<link href="{% static 'css/style-adaptive.css' %}" type="text/css" rel="stylesheet" media="all">
+	<link href="{% static 'css/style-animate.css' %}" type="text/css" rel="stylesheet" media="all">
+	<meta name="keywords" content="{% block keywords %}{{ main.keywords }}{% endblock keywords %}" />
+    <meta name="description" content="{% block description %}{{ main.description }}{% endblock %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link rel="icon" href="{% static 'fv/favicon-32x32.png' %}" sizes="32x32">
+    <!-- Favicons-->
+    <link rel="apple-touch-icon-precomposed" href="{% static 'fv/apple-icon-152x152.png' %}">
+    <!-- For iPhone -->
+    <meta name="msapplication-TileColor" content="#00bcd4">
+    <meta name="msapplication-TileImage" content="{% static 'fv/ms-icon-144x144.png' %}">
+    <!-- For Windows Phone -->
+	<meta name="format-detection" content="telephone=no">
+	<meta http-equiv="x-rim-auto-match" content="none">
+
+	<link href="{% static 'css/css.css' %}" rel="stylesheet">
+	<meta name="HandheldFriendly" content="true">
+<script language="javascript">
+<!--
+function writeCookie() {
+	var today = new Date();
+	var the_date = new Date("December 31, 2030");
+	var the_cookie_date = the_date.toGMTString();
+	var the_cookie = "users_res="+ screen.width +"x"+ screen.height;
+	var the_cookie = the_cookie + ";expires=" + the_cookie_date;
+	document.cookie = the_cookie;
+}
+function checkRes(width, height) {
+	if(width != screen.width || height != screen.height) {
+		writeCookie();
+	} else {
+		return true;
+	}
+}
+//-->
+</script>
+	<script language="javascript">
+	<!--
+	checkRes(1920, 1080);
+	//-->
+	</script>
+	<meta name="viewport" content="width=1170, user-scalable=yes">
+</head>
+
+
+<body>
+
+	<div id="main-wrapper">
+
+	<div id="menu">
+		<div class="w-center">
+			<ul>
+				<li><a href="#uslugi">Услуги</a></li>
+				<li><a href="#benefits">Преимущества</a></li>
+				<li><a href="#material-partners">Материалы</a></li>
+				<li><a href="#works">Галерея</a></li>
+				<li><a href="#team">О компании</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="clear"></div>
+
+	<div id="promo">
+		<div class="leaf leaf-1" data-parallax="" data-speed="20" data-start="-200"></div>
+		<div class="w-center">
+			<div class="man"></div>
+			<div class="top">
+				<div class="left">
+					<img src="{% static 'images/logo.png' %}" style="width:115px;bottom: 19px;height:100px;" class="logo" alt="#">
+					<span class="name">{{ main.line_1|safe }}</span>
+				</div>
+				<div class="center">{{ main.line_2|safe }}</div>
+				<div class="right">
+					<span class="tel">{{ main.phone }}</span>
+					<a nohref="" class="callback" data-modal="Modal-callback">Заказать звонок</a>
+				</div>
+			</div>
+			<div class="main">
+				<div class="text">
+					<div class="red-bg"><h1>{{ main.line_3|safe }}</h1></div>
+					<h4 class="t-sm">{{ main.line_4|safe }}</h4>
+					<div class="t-sm-mini">{{ main.line_5|safe }}</div>
+					<div class="privilege-items">
+						<div class="privilege-item" id="privilege-item-1">
+							<span class="z">Быстро</span>
+							<span class="d">от 4 дней</span>
+						</div>
+						<div class="privilege-item" id="privilege-item-2">
+							<span class="z">Выгодно</span>
+							<span class="d">цены от производителя</span>
+						</div>
+						<div class="privilege-item" id="privilege-item-3">
+							<span class="z">Надежно</span>
+							<span class="d">гарантия 30 лет</span>
+						</div>
+					</div>
+				</div>
+				<div class="white-form">
+					<div class="zag">Каталог<br> кованых изделий</div>
+					<div class="subzag">Оставьте Ваш номер с Вайбером<br> и получите полный каталог с ценами</div>
+					<form action="{% url 'book' %}" method="post">{% csrf_token %}
+						<input type="text" placeholder="Введите Ваше имя" value="" name="name" class="inps name required">
+						<input type="text" placeholder="Введите Ваш телефон" value="" name="phone" class="inps phone required phone_field">
+						<input type="submit" value="Получить каталог" name="submit" class="button-yellow submit-button big">
+						<input type="hidden" value="Получить каталог" name="form-title" class="form-title">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+		<div class="clear"></div>
+
+	<div id="uslugi">
+		<div class="leaf leaf-1" data-parallax="" data-speed="30" data-start="-250"></div>
+		<div class="leaf leaf-2" data-parallax="" data-speed="20" data-start="-250"></div>
+		<div class="leaf leaf-3" data-parallax="" data-speed="10" data-start="-200"></div>
+		<div class="tree" data-parallax="" data-speed="40" data-start="-200"></div>
+		<div class="house" data-parallax="" data-speed="22" data-start="-400" data-direction="top"></div>
+		<div class="w-center">
+			<h3 class="title-block title-block-why-us" id="benefits">Почему выбирают нас</h3>
+			<div class="benefit-items">
+				<div class="benefit-items">
+					<div class="benefit-item" id="benefit-item-1">
+						<div class="i"><i class="animate" data-animate="rollIn" data-duration="1.0s" data-delay="0.1s" data-offset="-100"></i></div>
+						<span class="z">Работаем<br> с 2005 года</span>
+					</div>
+					<div class="benefit-item" id="benefit-item-2">
+						<div class="i"><i class="animate" data-animate="rollIn" data-duration="1.0s" data-delay="0.2s" data-offset="-100"></i></div>
+						<span class="z">Только эксперты<br> в команде</span>
+					</div>
+					<div class="benefit-item" id="benefit-item-3">
+						<div class="i"><i class="animate" data-animate="rollIn" data-duration="1.0s" data-delay="0.3s" data-offset="-100"></i></div>
+						<span class="z">Сертифицированные<br> специалисты</span>
+					</div>
+					<div class="benefit-item" id="benefit-item-4">
+						<div class="i"><i class="animate" data-animate="rollIn" data-duration="1.0s" data-delay="0.4s" data-offset="-100"></i></div>
+						<span class="z">Гарантия 10 лет<br> на работу</span>
+					</div>
+					<div class="benefit-item" id="benefit-item-5">
+						<div class="i"><i class="animate" data-animate="rollIn" data-duration="1.0s" data-delay="0.5s" data-offset="-100"></i></div>
+						<span class="z">Цена фиксируется<br> в договоре</span>
+					</div>
+					<div class="benefit-item" id="benefit-item-6">
+						<div class="i"><i class="animate" data-animate="rollIn" data-duration="1.0s" data-delay="0.6s" data-offset="-100"></i></div>
+						<span class="z">Работы выполняются<br> и зимой</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+
+	<div id="material-partners">
+		<div class="leaf leaf-1" data-parallax="" data-speed="20" data-start="-250"></div>
+		<div class="leaf leaf-2" data-parallax="" data-speed="30" data-start="-250"></div>
+		<div class="leaf leaf-3" data-parallax="" data-speed="10" data-start="-200"></div>
+		<div class="tree"></div>
+		<div class="house"></div>
+		<div class="w-center">
+			<h3 class="title-block">Каталог работ</h3>
+			<div class="material-items">
+				{% for p in category %}
+					<div class="material-item animate" data-animate="swing" data-duration="1.0s" data-delay="0.{{ forloop.counter }}s" data-offset="-100" data-visibility="true">
+						{% thumbnail p.image "370x200" crop="center" as im %}
+							<img src="{{ im.url }}" alt="{{ p.title|striptags }}">
+						{% endthumbnail %}
+						<div><div>
+							<div class="zag">{{ p.title|safe }}</div>
+							<span class="more">Подробнее</span>
+							<div class="desc">
+								<div class="txt">
+									{{ p.description }}
+								</div>
+								<button class="button-yellow">Заказать {{ p.order_title }}</button>
+							</div>
+						</div></div>
+					</div>
+				{% endfor %}
+				</div>
+
+
+			<h3 class="title-block title-block-podbor">Нужны кованые изделия под заказ?<br> Мы воплатим любую вашу идею в жизнь</h3>
+			<div class="consulting">
+				<div class="left">
+					<h3 class="title">Изготовим кованные изделия<br> по вашему индивидуальному заказу</h3>
+					<div class="subtitle">Оставьте заявку Наш специалист свяжется с Вами и просчитает стоимость изготовления с монтажем</div>
+					<div class="form-bl">
+						<div class="white-form no-bg">
+							<form action="{% url 'book' %}" method="post">{% csrf_token %}
+								<input type="text" placeholder="Введите Ваш телефон" value="" name="phone" class="inps phone required phone_field">
+								<input type="submit" value="Просчитать стоимость" name="submit" class="button-yellow submit-button">
+								<input type="hidden" value="Просчитать стоимость" name="form-title" class="form-title">
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="right">
+					<div class="img">
+						{% thumbnail main.ceo_image "320x220" crop="center" as im %}
+							<img src="{{ im.url }}" alt="{{ main.ceo_name }}">
+						{% endthumbnail %}
+						<div class="circle"><div><div>Нами<br> смонтировано<br> более 154 000 м²<br> кованных изделий</div></div></div>
+					</div>
+					<span class="name">{{ main.ceo_name }}</span>
+					<div class="position">{{ main.ceo_title|safe }}</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="clear"></div>
+
+	<div id="works">
+		<div class="w-center">
+			<h3 class="title-block">Примеры выполненных работ</h3>
+			<div class="wrap">
+				<div class="owl-carousel owl-theme" id="owl-works">
+                    {% for p in galery %}
+
+                    	{% if forloop.counter0|divisibleby:2 or forloop.first %}
+							<div class="item">
+						{% endif %}
+							<div class="img">
+								<a class="fancybox" rel="group-works" href="{{ p.image.url }}">
+									{% thumbnail p.image "270x220" crop="center" as im %}
+										<img src="{{ im.url }}" alt="{{ p.ln }} {{ p.fn }}">
+									{% endthumbnail %}
+								</a>
+							</div>
+						{% if forloop.counter|divisibleby:2 or forloop.last %}
+							</div>
+						{% endif %}
+                    {% endfor %}
+				</div>
+				<span class="arrows prev"></span>
+				<span class="arrows next"></span>
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+
+	<div class="clear"></div>
+
+	<div id="team">
+		<div class="leaf leaf-1" data-parallax="" data-speed="30" data-start="-250"></div>
+		<div class="leaf leaf-2" data-parallax="" data-speed="20" data-start="-250"></div>
+		<div class="leaf leaf-3" data-parallax="" data-speed="10" data-start="-200"></div>
+		<div class="tree"></div>
+		<div class="w-center">
+			<h3 class="title-block">У нас работают сертифицированные специалисты</h3>
+			<div class="team-items">
+				{% for p in personal %}
+					<div class="team-item animate" data-animate="fadeIn" data-duration="1.0s" data-delay="0.{{ forloop.counter }}s" data-offset="-80">
+						<div class="i">
+							{% thumbnail p.image "170x170" crop="center" as im %}
+								<img src="{{ im.url }}" alt="{{ p.ln }} {{ p.fn }}">
+							{% endthumbnail %}
+						</div>
+						<span class="z">{{ p.ln }}<br> {{ p.fn }}</span>
+						<span class="p">{{ p.title }}</span>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+
+	<div id="defects">
+		<div class="w-center">
+			<div class="left animate" data-animate="fadeInLeft" data-duration="1.0s" data-delay="0.1s" data-offset="-400"><div><div>
+				<p>Не нашли то, что<br>  искали?</p>
+				<p class="yellow">Получите каталог <br>Кованных изделий</p>
+			</div></div></div>
+			<div class="right"><div><div>
+				<div class="white-form no-bg">
+					<div class="zag">Оставьте заявку </div>
+					<div class="subzag">Скинем Вам каталог кованных изделий в Viber<br> в течении 3 минут</div>
+					<form action="{% url 'book' %}" method="post">{% csrf_token %}
+						<input type="text" placeholder="Введите Ваше имя" value="" name="name" class="inps name required">
+						<input type="text" placeholder="Введите Ваш телефон" value="" name="phone" class="inps phone required phone_field">
+						<div class="add-comment"><span><i></i>Добавить комментарий</span></div>
+						<textarea placeholder="Опишите Вашу проблему. Например: протекает крыша, нужен ремонт" name="comment" class="inps comment hidden"></textarea>
+						<input type="submit" value="Получить каталог" name="submit" class="button-yellow submit-button big">
+						<input type="hidden" value="Получить каталог" name="form-title" class="form-title">
+					</form>
+				</div>
+			</div></div></div>
+		</div>
+	</div>
+	<div class="clear"></div>
+
+	<div id="footer">
+		<div class="w-center">
+			<div class="left">
+				<img src="{% static 'images/logo.png' %}" style="width: 65px;height: 58px;bottom: 5px;" class="logo" alt="#">
+				<span class="name">{{ main.line_1|safe }}</span>
+			</div>
+			<div class="center">{{ main.phone }}</div>
+			<div class="reforge">
+				<a href="http://slify.co/" target="_blank">Разработка Landing Page</a>
+			</div>
+		</div>
+		<div class="bottom">
+			<div class="w-center">
+				<div class="left-col"><a nohref="" class="confidential" data-modal="Modal-confidential">Политика конфиденциальности</a></div>
+				<div class="right-col">{{ main.line_2|striptags }}</div>
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+
+	</div>
+
+	<!-- Всплывающие окна -->
+	<div style="display: none;">
+		<div class="box-modal" id="Modal-callback">
+			<div class="box-modal_close arcticmodal-close"></div>
+			<div class="white-form">
+				<div class="zag">Заказать обратный звонок</div>
+				<div class="subzag">Специалист свяжется с Вами в течение 10 минут</div>
+				<form action="{% url 'book' %}" method="post">{% csrf_token %}
+					<input type="text" placeholder="Введите Ваше имя" value="" name="name" class="inps name required">
+					<input type="text" placeholder="Введите Ваш телефон" value="" name="phone" class="inps phone required phone_field">
+					<input type="submit" value="Заказать звонок" name="submit" class="button-yellow submit-button">
+					<input type="hidden" value="Обратный звонок" name="form-title" class="form-title">
+				</form>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div style="display: none;">
+		<div class="box-modal" id="Modal-material">
+			<div class="box-modal_close arcticmodal-close"></div>
+			<div class="material-modal">
+				<div class="zagolovok"></div>
+				<div class="txt-wrap"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div style="display: none;">
+		<div class="box-modal" id="Modal-material-single">
+			<div class="box-modal_close arcticmodal-close"></div>
+			<div class="white-form">
+				<div class="zag">Оставьте заявку на заказ</div>
+				<form action="{% url 'book' %}" method="post">{% csrf_token %}
+					<input type="text" placeholder="Введите Ваше имя" value="" name="name" class="inps name required">
+					<input type="text" placeholder="Введите Ваш телефон" value="" name="phone" class="inps phone required phone_field">
+					<input type="submit" value="Заказать" name="submit" class="button-yellow submit-button">
+					<input type="hidden" value="" name="form-title" class="form-title">
+				</form>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div style="display: none;">
+		<div class="box-modal" id="Modal-confidential">
+			<div class="box-modal_close arcticmodal-close"></div>
+			<div class="modal-copyright">
+				<div class="zag">Политика конфиденциальности</div>
+				<p>Администрация данной посадочной страницы (Лэндинг) не может передать или раскрыть информацию предоставленную пользователем (далее Пользователь) при регистрации и использовании функций сайта третьим лицам, кроме случаев, описанных законодательством страны, на территории которой пользователь ведет свою деятельность.</p>
+				<p>Для регистрации на посадочной странице, пользователь обязан внести некоторую персональную информацию. Для проверки предоставленных данных, посадочная страница оставляет за собой право потребовать доказательства идентичности в онлайн или офлайн режимах.</p>
+				<p>Лэндинг прилагает все усилия для сбережения в сохранности личных данных Пользователя. Личная информация может быть раскрыта в случаях, описанных законодательством, либо когда администрация сочтет подобные действия необходимыми для соблюдения юридической процедуры, судебного распоряжения или легального процесса необходимого для работы Пользователя с Лэндингом. В других случаях, ни при каких условиях, информация, которую Пользователь передает Лэндингу, не будет раскрыта третьим лицам.</p>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+
+	<!-- Скрипты -->
+	<script type="text/javascript" src="{% static 'js/all.scripts.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/scripts.js' %}?v=2"></script>
+
+</body>
+</html>

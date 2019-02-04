@@ -1,0 +1,301 @@
+@media (min-width: 840px) and (max-width: 1199px) {
+	.w-center, #econom .w-center {width: 800px;}
+	#menu ul {
+		padding-left: 0px;
+		padding-right: 0px;
+		text-align: center;
+		margin-left: -20px;
+		margin-right: -20px;
+	}
+	#menu ul li {
+		width: auto !important;
+		margin-left: 20px !important;
+		margin-right: 20px !important;
+	}
+	#promo:before {
+		content: "";
+		display: block;
+		width: 100%;
+		height: 100%;
+		background: rgba(255,255,255,0.7);
+		position: absolute;
+		top: 0px;
+		left: 0px;
+	}
+	#promo .top .left {
+		width: 150px;
+	}
+	#promo .top .left .name {
+		margin-left: 10px;
+		display: none;
+	}
+	#promo .top .center {
+		width: 300px;
+		margin-left: 50px;
+	}
+	#promo .top .right {
+		width: 220px;
+		padding-top: 13px;
+	}
+	#promo .top .right .tel {
+		font-size: 23px;
+		line-height: 25px;
+	}
+	#promo .main .text {
+		width: auto;
+		margin-top: 20px;
+	}
+	#promo .main .text .red-bg {
+		width: auto;
+		height: auto;
+		font-size: 40px;
+		line-height: 46px;
+	}
+	#promo .w-center > .man {
+		display: none;
+	}
+	#promo .main .text .t-sm, #promo .main .text .t-sm-mini, #promo .main .text .privilege-items {
+		width: 400px;
+	}
+	#promo .main .text .t-sm br, #promo .main .text .t-sm-mini br {
+		display: none;
+	}
+	#promo .main .text .t-sm {
+		margin-top: 76px;
+		font-size: 26px;
+		line-height: 32px;
+	}
+	#promo .main .white-form {
+		top: 270px;
+	}
+	#promo .main .text .t-sm-mini {
+		margin-top: 20px;
+		font-size: 17px;
+		line-height: 22px;
+	}	
+	#promo .main .text .privilege-items {
+		padding-top: 15px;
+	}
+	#promo .main .text .privilege-item {
+		padding-top: 19px;
+		min-height: 80px;
+	}
+	#promo .main .text .privilege-item#privilege-item-1:before {
+		top: 21px;
+	}
+	#promo .main .text .privilege-item#privilege-item-2:before {
+		top: 21px;
+	}
+	#promo .main .text .privilege-item#privilege-item-3:before {
+		top: 18px;
+	}
+	#promo .main .text .privilege-item .z {
+		font-size: 21px;
+		line-height: 23px;
+	}
+	#promo .main .text .privilege-item .d {
+		padding-top: 0px;
+	}
+	.title-block {
+		font-size: 36px;
+		line-height: 44px;
+	}
+	.d-none {
+		display: block;
+	}
+	#uslugi > .house {
+		display: none;
+	}
+	#uslugi .img {
+		display: none;
+	}
+	#uslugi .item:before {
+		display: none;
+	}
+	#uslugi .item {
+		display: inline-block !important;
+		vertical-align: top;
+		position: relative !important;
+		top: 0px !important;
+		left: 0px !important;
+		right: 0px !important;
+		margin: 0px 0px 0px 0px !important;
+		width: 50%;
+		text-align: left !important;
+		border: 2px solid #ddd;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing:    border-box;
+		box-sizing:         border-box;
+		padding: 30px 30px 30px 30px !important;
+	}
+	#uslugi .item#usluga-1, #uslugi .item#usluga-2 {
+		border-top: none;
+		min-height: 235px;
+	}
+	#uslugi .item#usluga-3, #uslugi .item#usluga-4 {
+		border-top: none;
+		border-bottom: none;
+		min-height: 222px;
+	}
+	#uslugi .item#usluga-1, #uslugi .item#usluga-3 {
+		border-left: none;
+		border-right: none;
+	}
+	#uslugi .item#usluga-2, #uslugi .item#usluga-4 {
+		border-right: none;
+	}
+	#uslugi .items {
+		border: 2px solid #ddd;
+		-webkit-border-radius: 4px;
+		-moz-border-radius:    4px;
+		border-radius:         4px;
+		font-size: 0px;
+		margin-top: 60px;
+		height: auto;
+	}
+	#uslugi {
+		padding-bottom: 115px;
+	}
+	#uslugi .benefit-items {
+		margin-left: 0px; 
+		margin-right: 0px; 
+	}
+	#uslugi .benefit-item {
+		width: 33.3333%;
+	}
+	#econom .left {
+		width: 400px;
+	}
+	#econom .right {
+		width: 370px;
+	}
+	#econom .left .zag {
+		font-size: 31px;
+		line-height: 39px;
+	}
+	#econom .left .zag br { 
+		display: none;
+	}
+	#econom .left .subzag {
+		font-size: 20px;
+		line-height: 26px;
+	}
+	#econom .left .red-bl {
+		display: inline-block;
+		vertical-align: top;
+		margin-top: 35px; 
+		padding: 20px 30px 16px 30px;
+		width: auto;
+		min-height: inherit;
+		font-size: 24px;
+		line-height: 30px;
+	}
+	#econom .left .red-bl:after {
+		right: -119px;
+	}
+	#uslugi .item > span, #uslugi .item.active > span {
+		color: #d35939;
+		border-bottom: none;
+		text-transform: uppercase;
+		font-size: 22px;
+		line-height: 30px;
+	}
+	#material-partners .title-block-podbor br, #material-partners .title-block-partners br {
+		display: none;
+	}
+	#material-partners .consulting {
+		margin-top: 60px; 
+		padding: 40px 40px 40px 40px;
+		width: auto;
+	}
+	#material-partners .consulting .left {
+		width: 400px;
+	}
+	#material-partners .consulting .left .title {
+		font-size: 26px;
+		line-height: 32px;
+	}
+	#material-partners .consulting .left .form-bl .white-form .inps {
+		width: 365px;
+	}
+	#material-partners .consulting .right {
+		width: 280px;
+		margin-top: 0px;
+	}
+	#material-partners .consulting .right .img {
+		width: 280px;
+		height: 193px;
+	}
+	#works .wrap {
+		width: 74%;
+		margin-left: 0px;
+		margin-right: 0px;
+		margin: 0 auto;
+		margin-top: 80px;
+	}
+	#works .wrap .owl-nav .owl-prev, #works .wrap span.arrows.prev {
+		margin-left: -400px;
+	}
+	#works .wrap .owl-nav .owl-next, #works .wrap span.arrows.next {
+		margin-right: -400px;
+	}
+	#reviews .wrap .item .right {
+		width: 400px;
+	}
+	#reviews .wrap .item .w {
+		width: 630px;
+	}
+	#reviews .wrap .owl-nav .owl-prev, #reviews .wrap span.arrows.prev {
+		margin-left: -400px;
+	}
+	#reviews .wrap .owl-nav .owl-next, #reviews .wrap span.arrows.next {
+		margin-right: -400px;
+	}
+	#reviews .wrap .item .right .comment {
+		padding: 33px 35px 30px 35px;
+		font-size: 15px;
+		line-height: 21px;
+	}
+	#team .team-items {
+		padding-top: 40px;
+	}
+	#team .team-item {
+		margin-left: 10px; 
+		margin-right: 10px; 
+		width: 180px;
+	}
+	#team .team-item .z {
+		padding-top: 28px;
+		padding-bottom: 2px;
+		font-size: 17px;
+		line-height: 24px;
+	}
+	#defects .left {
+		display: none;
+	}
+	#defects .right {
+		width: 100%;
+	}	
+	#footer .left {
+		width: 320px;
+	}
+	#footer .left .name {
+		margin-left: 20px; 
+	}
+	#footer .center {
+		margin-left: 20px;
+		width: 240px;
+		font-size: 22px;
+	}
+	#footer .reforge {
+		width: 200px;
+	}
+	.box-modal#Modal-confidential {
+		width: 700px;
+	}
+	.modal-copyright {
+		padding-left: 30px;
+		padding-right: 30px;
+		width: 640px;
+	}
+}
