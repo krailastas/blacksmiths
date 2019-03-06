@@ -84,34 +84,19 @@ function checkRes(width, height) {
 			</div>
 			<div class="main">
 				<div class="text">
-					<div class="red-bg"><h1>{{ main.line_3|safe }}</h1></div>
-					<h4 class="t-sm">{{ main.line_4|safe }}</h4>
-					<div class="t-sm-mini">{{ main.line_5|safe }}</div>
-					<div class="privilege-items">
-						<div class="privilege-item" id="privilege-item-1">
-							<span class="z">Без ожидания <br/>и очереди</span>
-							<span class="d">Ваш заказ идет сразу в работу</span>
-						</div>
+					<div class="red-bg"><h1>{{ object.title }}</h1></div>
+
+
 						<div class="privilege-item" id="privilege-item-2">
-							<span class="z">Выгодно</span>
-							<span class="d">цены от производителя</span>
+							<span class="z">Цены от производителя</span>
+
 						</div>
 						<div class="privilege-item" id="privilege-item-3">
-							<span class="z">Надежно</span>
-							<span class="d">гарантия 30 лет</span>
+							<span class="z">ГАРАНТИЯ 30 ЛЕТ</span>
+
 						</div>
-					</div>
-				</div>
-				<div class="white-form">
-					<div class="zag">Каталог<br> кованых изделий</div>
-					<div class="subzag">Оставьте Ваш номер с Вайбером<br> и получите полный каталог с ценами</div>
-					<form action="{% url 'book' %}" method="post">{% csrf_token %}
-						<input type="text" placeholder="Введите Ваше имя" value="" name="name" class="inps name required">
-						<input type="text" placeholder="Введите Ваш телефон" value="" name="phone" class="inps phone required phone_field">
-						<input type="submit" value="Получить каталог" name="submit" class="button-yellow submit-button big">
-						<input type="hidden" value="Получить каталог" name="form-title" class="form-title">
-					</form>
-				</div>
+
+
 			</div>
 		</div>
 	</div>
@@ -168,23 +153,21 @@ function checkRes(width, height) {
 			<h3 class="title-block">Каталог работ</h3>
 			<div class="material-items">
 				{% for p in category %}
-<a href="{% url 'category' p.id %}">
-					<div class="material-item animate" data-animate="swing" data-duration="1.0s" data-delay="0.{{ forloop.counter }}s" data-offset="-100">
+					<div class="material-item animate" data-animate="swing" data-duration="1.0s" data-delay="0.{{ forloop.counter }}s" data-offset="-100" data-visibility="true">
 						{% thumbnail p.image "370x200" crop="center" as im %}
 							<img src="{{ im.url }}" alt="{{ p.title|striptags }}">
 						{% endthumbnail %}
 						<div><div>
 							<div class="zag">{{ p.title|safe }}</div>
 							<span class="more">Больше вариантов</span>
-							<!--<div class="desc">-->
-								<!--<div class="txt">-->
-									<!--{{ p.description }}-->
-								<!--</div>-->
-								<!--<button class="button-yellow">Заказать {{ p.order_title }}</button>-->
-							<!--</div>-->
+							<div class="desc">
+								<div class="txt">
+									{{ p.description }}
+								</div>
+								<button class="button-yellow">Заказать {{ p.order_title }}</button>
+							</div>
 						</div></div>
 					</div>
-						</a>
 				{% endfor %}
 				</div>
 
