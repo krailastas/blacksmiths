@@ -6,4 +6,3 @@ requests[socks]
 celery==3.1.25
 redis==2.10.6
 sorl-thumbnail==12.5.0
-python-telegram-bot==11.1.0

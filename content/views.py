@@ -1,4 +1,6 @@
-import telegram
+import json
+
+import requests
 from django.conf import settings
 
 from django.http import HttpResponseRedirect
@@ -7,9 +9,6 @@ from django.views.generic import TemplateView, FormView, DetailView
 
 from content.forms import BookForm
 from content.models import MainPages, Personal, Galery, Category, Product
-
-
-bot = telegram.Bot(token=settings.TELEGRAM_TOKEN)
 
 
 class BaseView(TemplateView):
@@ -30,9 +29,13 @@ class BookView(FormView):
     def form_valid(self, form):
         obj = form.save(commit=False)
         obj.save()
-        bot.sendMessage(
-            chat_id=settings.TELEGRAM_GROUP_ID,
-            text='#phone: {}, #name: {}, #comment: {}'.format(obj.phone, obj.name, obj.comment)
+        data = {
+            'chat_id': settings.TELEGRAM_GROUP_ID,
+            'text': '#phone: {}, #name: {}, #comment: {}'.format(obj.phone, obj.name, obj.comment)}
+        data = json.dumps(data)
+        requests.post(data=data, headers={
+            'Content-Type': 'application/json'},
+            url='https://api.telegram.org/bot{}/sendMessage'.format(settings.TELEGRAM_TOKEN)
         )
         return HttpResponseRedirect(reverse_lazy('success'))
 

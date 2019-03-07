@@ -114,11 +114,9 @@ function checkRes(width, height) {
 	<div id="menu">
 		<div class="w-center">
 			<ul>
-				<li><a href="#benefits">Преимущества</a></li>
+				<li><a href="{% url 'home' %}">Главная</a></li>
 				<li><a href="#material-partners">{{ object.menu_name }}</a></li>
-				<li><a href="#defects">Индивидуальный заказ</a></li>
-				<li><a href="#works">Примеры выполненных работ</a></li>
-				<li><a href="#team">Наши специалисты</a></li>
+				<li><a href="#defects">Контакты</a></li>
 			</ul>
 		</div>
 	</div>
@@ -159,44 +157,7 @@ function checkRes(width, height) {
 
 		<div class="clear"></div>
 
-	<div id="uslugi">
-		<div class="leaf leaf-1" data-parallax="" data-speed="30" data-start="-250"></div>
-		<div class="leaf leaf-2" data-parallax="" data-speed="20" data-start="-250"></div>
-		<div class="leaf leaf-3" data-parallax="" data-speed="10" data-start="-200"></div>
-		<div class="tree" data-parallax="" data-speed="40" data-start="-200"></div>
-		<div class="house" data-parallax="" data-speed="22" data-start="-400" data-direction="top"></div>
-		<div class="w-center">
-			<h3 class="title-block title-block-why-us" id="benefits">Почему выбирают нас</h3>
-			<div class="benefit-items">
-				<div class="benefit-items">
-					<div class="benefit-item" id="benefit-item-1">
-						<div class="i"><i class="animate" data-animate="rollIn" data-duration="1.0s" data-delay="0.1s" data-offset="-100"></i></div>
-						<span class="z">Работаем<br> с 2007 года</span>
-					</div>
-					<div class="benefit-item" id="benefit-item-2">
-						<div class="i"><i class="animate" data-animate="rollIn" data-duration="1.0s" data-delay="0.2s" data-offset="-100"></i></div>
-						<span class="z">Только эксперты<br> в команде</span>
-					</div>
-					<div class="benefit-item" id="benefit-item-3">
-						<div class="i"><i class="animate" data-animate="rollIn" data-duration="1.0s" data-delay="0.3s" data-offset="-100"></i></div>
-						<span class="z">Точное выполнение работ по заранее согласованным эскизам</span>
-					</div>
-					<div class="benefit-item" id="benefit-item-4">
-						<div class="i"><i class="animate" data-animate="rollIn" data-duration="1.0s" data-delay="0.4s" data-offset="-100"></i></div>
-						<span class="z">Гарантийное обязательство в течении 5 - 30 лет</span>
-					</div>
-					<div class="benefit-item" id="benefit-item-5">
-						<div class="i"><i class="animate" data-animate="rollIn" data-duration="1.0s" data-delay="0.5s" data-offset="-100"></i></div>
-						<span class="z">Всесторонний контроль на каждом этапе выполнения заказа</span>
-					</div>
-					<div class="benefit-item" id="benefit-item-6">
-						<div class="i"><i class="animate" data-animate="rollIn" data-duration="1.0s" data-delay="0.6s" data-offset="-100"></i></div>
-						<span class="z">Стойкость изделий к воздействию корозии и ржавчины</span>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+
 	<div class="clear"></div>
 
 	<div id="material-partners">
@@ -230,7 +191,7 @@ function checkRes(width, height) {
 							</div>
 							<div class="desc">
 								<div class="txt">
-									{{ p.description }}
+									{{ p.description|safe }}
 								</div>
 
 								<button class="button-yellow" onclick="$('#comment_singl').val('Заказ: '+'{{ p.title }}');">Заказать {{ p.order_title }}</button>
@@ -238,99 +199,23 @@ function checkRes(width, height) {
 						</div>
 
 						</div>
-<div class="zag" style="color: #000000;font-size: 15px;">{{ p.title|safe }} <br/> <span style="font-style: italic;font-weight: normal;font-size: 15px;">Цена: </span><span style="color: #729e0b;font-style: italic;font-weight: normal;font-size: 23px;">{{ p.price }} </span><span style="font-style: italic;font-weight: normal;font-size: 15px;">{{ p.unit }}</span>
+						<div style="color: #000000;font-size: 15px;"><span style="font-size:18px;line-height: 30px;" id="dd"><b>{{ p.title|safe }}</b></span><br/>
+							{{ p.short_description|safe }}
+							<span style="font-style: italic;font-weight: normal;font-size: 15px; line-height: 27px;">Цена: </span><span id="ddd" style="color: #729e0b;font-style: italic;font-weight: normal;font-size: 23px;">{{ p.price }} </span><span id="dddd" style="font-style: italic;font-weight: normal;font-size: 15px;">{{ p.unit }}</span>
 	<span><button class="button-yellow" style="width: 234px;height: 45px;" >Заказать</button></span></div>
 					</div>
 				{% endfor %}
 				</div>
 
 
-			<h3 class="title-block title-block-podbor">Нужны кованые изделия под заказ?<br> Мы воплатим любую вашу идею в жизнь</h3>
-			<div class="consulting">
-				<div class="left">
-					<h3 class="title">Изготовим кованные изделия<br> по вашему индивидуальному заказу</h3>
-					<div class="subtitle">Оставьте заявку Наш специалист свяжется с<br/> Вами и просчитает стоимость изготовления с монтажем</div>
-					<div class="form-bl">
-						<div class="white-form no-bg">
-							<form action="{% url 'book' %}" method="post">{% csrf_token %}
-								<input type="text" placeholder="Введите Ваш телефон" value="" name="phone" class="inps phone required phone_field">
-								<input type="submit" value="Просчитать стоимость" name="submit" class="button-yellow submit-button">
-								<input type="hidden" value="Просчитать стоимость" name="form-title" class="form-title">
-							</form>
-						</div>
-					</div>
-				</div>
-				<div class="right">
-					<div class="img">
-						{% thumbnail main.ceo_image "320x220" crop="center" as im %}
-							<img src="{{ im.url }}" alt="{{ main.ceo_name }}">
-						{% endthumbnail %}
-						<div class="circle"><div><div>Нами<br> смонтировано<br> более 154 000 м²<br> кованных изделий</div></div></div>
-					</div>
-					<span class="name">{{ main.ceo_name }}</span>
-					<div class="position">{{ main.ceo_title|safe }}</div>
-				</div>
-			</div>
+
 
 		</div>
 	</div>
 
-	<div class="clear"></div>
-
-	<div id="works">
-		<div class="w-center">
-			<h3 class="title-block">Примеры выполненных работ</h3>
-			<div class="wrap">
-				<div class="owl-carousel owl-theme" id="owl-works">
-                    {% for p in galery %}
-
-                    	{% if forloop.counter0|divisibleby:2 or forloop.first %}
-							<div class="item">
-						{% endif %}
-							<div class="img">
-								<a class="fancybox" rel="group-works" href="{{ p.image.url }}">
-									{% thumbnail p.image "270x220" crop="center" as im %}
-										<img src="{{ im.url }}" alt="{{ p.ln }} {{ p.fn }}">
-									{% endthumbnail %}
-								</a>
-							</div>
-						{% if forloop.counter|divisibleby:2 or forloop.last %}
-							</div>
-						{% endif %}
-                    {% endfor %}
-				</div>
-				<span class="arrows prev"></span>
-				<span class="arrows next"></span>
-			</div>
-		</div>
-	</div>
-	<div class="clear"></div>
 
 	<div class="clear"></div>
 
-	<div id="team">
-		<div class="leaf leaf-1" data-parallax="" data-speed="30" data-start="-250"></div>
-		<div class="leaf leaf-2" data-parallax="" data-speed="20" data-start="-250"></div>
-		<div class="leaf leaf-3" data-parallax="" data-speed="10" data-start="-200"></div>
-		<div class="tree"></div>
-		<div class="w-center">
-			<h3 class="title-block">У нас работают сертифицированные специалисты</h3>
-			<div class="team-items">
-				{% for p in personal %}
-					<div class="team-item animate" data-animate="fadeIn" data-duration="1.0s" data-delay="0.{{ forloop.counter }}s" data-offset="-80">
-						<div class="i">
-							{% thumbnail p.image "170x170" crop="center" as im %}
-								<img src="{{ im.url }}" alt="{{ p.ln }} {{ p.fn }}">
-							{% endthumbnail %}
-						</div>
-						<span class="z">{{ p.ln }}<br> {{ p.fn }}</span>
-						<span class="p">{{ p.title }}</span>
-					</div>
-				{% endfor %}
-			</div>
-		</div>
-	</div>
-	<div class="clear"></div>
 
 	<div id="defects">
 		<div class="w-center">

@@ -46,6 +46,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to='product/images')
     keywords = models.CharField(max_length=255, blank=True, default='BlackSmiths - кованные изделия в Украине')
     description = models.TextField(max_length=500, blank=True, default='BlackSmiths - кованные изделия в Украине')
+    short_description = models.TextField(max_length=500, blank=True)
     is_active = models.BooleanField(default=True)
     order = models.IntegerField(default=1)
 

@@ -48,12 +48,14 @@ $(document).ready(function() {
 	$("#material-partners .material-item").click(function(e) {
 		e.preventDefault();
 		var that = $(this);
-		var modalTitle = that.find('.zag').text();
+		var modalTitle = that.find('#dd').text();
+		var modalPrice = that.find('#ddd').text();
+		var modalUnit = that.find('#dddd').text();
 		var modalContent = that.find('.desc').html();
 		var modalContent2 = that.find('#gall').html();
 		console.log(modalContent2);
 		$('#Modal-material .zagolovok').text(modalTitle);
-		$('#Modal-material .txt-wrap').html(modalContent2+modalContent);
+		$('#Modal-material .txt-wrap').html(modalContent2+'<span style="font-style: italic;font-weight: normal;font-size: 15px;"><b>Цена: </b></span><span class="zag2" style="color: #729e0b;font-style: italic;font-weight: normal;font-size: 23px;">'+modalPrice+' </span><span class="zag3" style="font-style: italic;font-weight: normal;font-size: 15px;">'+modalUnit+'</span><br/><br/>'+modalContent);
 		$('#Modal-material').arcticmodal({closeOnEsc:true,closeOnOverlayClick:true});
 	});
 	$(".material-modal").on("click", '.button-yellow', function(e) {
