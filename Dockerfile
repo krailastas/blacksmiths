@@ -3,7 +3,7 @@ FROM python:3.6.4-alpine3.7
 RUN apk update && apk add \
         postgresql-dev \
         libc-dev \
-        unixodbc-devgcc \
+        world[unixodbc-devgcc] \
         unixodbc-dev \
         python3-dev \
         gcc \
