@@ -25,6 +25,8 @@ class MainPages(models.Model):
 class Category(models.Model):
     title = models.CharField(max_length=255)
     order_title = models.CharField(max_length=255)
+    menu_name = models.CharField(max_length=255)
+    name_inside_catalog = models.CharField(max_length=255)
     image = models.ImageField(upload_to='category/images')
     keywords = models.CharField(max_length=255, blank=True, default='BlackSmiths - кованные изделия в Украине')
     description = models.TextField(max_length=500, blank=True, default='BlackSmiths - кованные изделия в Украине')
@@ -33,6 +35,29 @@ class Category(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Product(models.Model):
+    title = models.CharField(max_length=255)
+    category = models.ForeignKey('content.Category', related_name='category_products', on_delete=models.CASCADE)
+    order_title = models.CharField(max_length=255)
+    price = models.CharField(max_length=255)
+    unit = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='product/images')
+    keywords = models.CharField(max_length=255, blank=True, default='BlackSmiths - кованные изделия в Украине')
+    description = models.TextField(max_length=500, blank=True, default='BlackSmiths - кованные изделия в Украине')
+    is_active = models.BooleanField(default=True)
+    order = models.IntegerField(default=1)
+
+    def __str__(self):
+        return self.title
+
+
+class Images(models.Model):
+    image = models.ImageField(upload_to='product/images')
+    product = models.ForeignKey('content.Product', related_name='product_images', on_delete=models.CASCADE)
+    is_active = models.BooleanField(default=True)
+    order = models.IntegerField(default=1)
 
 
 class Personal(models.Model):

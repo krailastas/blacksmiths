@@ -4,12 +4,12 @@
 <html lang="ru">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>{{ main.title }}</title>
+	<title>{{ object.title }} - blacksmiths-place.com</title>
 	<link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet" media="all">
 	<link href="{% static 'css/style-adaptive.css' %}" type="text/css" rel="stylesheet" media="all">
 	<link href="{% static 'css/style-animate.css' %}" type="text/css" rel="stylesheet" media="all">
-	<meta name="keywords" content="{% block keywords %}{{ main.keywords }}{% endblock keywords %}" />
-    <meta name="description" content="{% block description %}{{ main.description }}{% endblock %}" />
+	<meta name="keywords" content="{% block keywords %}{{ object.keywords }}{% endblock keywords %}" />
+    <meta name="description" content="{% block description %}{{ object.description }}{% endblock %}" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <link rel="icon" href="{% static 'fv/favicon-32x32.png' %}" sizes="32x32">
     <!-- Favicons-->
@@ -23,6 +23,62 @@
 
 	<link href="{% static 'css/css.css' %}" rel="stylesheet">
 	<meta name="HandheldFriendly" content="true">
+	<style>
+		#material-partners .material-item:before {
+    content: "";
+    display: block;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    -webkit-border-radius: inherit;
+    -moz-border-radius: inherit;
+    border-radius: inherit;
+    background: none;
+    z-index: 2;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    transition: all 0.3s;
+}
+#material-partners .material-item {
+    display: inline-block;
+    vertical-align: top;
+    margin: 30px 15px 150px 15px;
+    padding: 0px 0px 0px 0px;
+    width: 300px;
+    height: 300px;
+    position: relative;
+    font-size: 22px;
+    line-height: 21px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: #ddd;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+}
+
+#menu ul li:nth-child(3) {
+    width: 210px;
+}
+#menu ul li:nth-child(2) {
+    width: 210px;
+}
+#menu ul li:nth-child(4) {
+    width: 270px;
+}
+#menu ul li:nth-child(5) {
+    width: 200px;
+}
+	</style>
 <script language="javascript">
 <!--
 function writeCookie() {
@@ -58,10 +114,11 @@ function checkRes(width, height) {
 	<div id="menu">
 		<div class="w-center">
 			<ul>
-				<li><a href="#material-partners">Каталог</a></li>
 				<li><a href="#benefits">Преимущества</a></li>
+				<li><a href="#material-partners">{{ object.menu_name }}</a></li>
+				<li><a href="#defects">Индивидуальный заказ</a></li>
 				<li><a href="#works">Примеры выполненных работ</a></li>
-				<li><a href="#team">О компании</a></li>
+				<li><a href="#team">Наши специалисты</a></li>
 			</ul>
 		</div>
 	</div>
@@ -70,10 +127,9 @@ function checkRes(width, height) {
 	<div id="promo">
 		<div class="leaf leaf-1" data-parallax="" data-speed="20" data-start="-200"></div>
 		<div class="w-center">
-			<div class="man"></div>
 			<div class="top">
 				<div class="left">
-					<img src="{% static 'images/logo.png' %}" style="width:115px;bottom: 19px;height:100px;" class="logo" alt="#">
+					<a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" style="width:115px;bottom: 19px;height:100px;" class="logo" alt="#"></a>
 					<span class="name">{{ main.line_1|safe }}</span>
 				</div>
 				<div class="center">{{ main.line_2|safe }}</div>
@@ -84,7 +140,7 @@ function checkRes(width, height) {
 			</div>
 			<div class="main">
 				<div class="text">
-					<div class="red-bg"><h1>{{ object.title }}</h1></div>
+					<div class="red-bg"><h1>{{ object.order_title|safe }}</h1></div>
 
 
 						<div class="privilege-item" id="privilege-item-2">
@@ -150,23 +206,40 @@ function checkRes(width, height) {
 		<div class="tree"></div>
 		<div class="house"></div>
 		<div class="w-center">
-			<h3 class="title-block">Каталог работ</h3>
+			<h3 class="title-block">{{ object.name_inside_catalog }}</h3>
 			<div class="material-items">
-				{% for p in category %}
+				{% for p in product %}
 					<div class="material-item animate" data-animate="swing" data-duration="1.0s" data-delay="0.{{ forloop.counter }}s" data-offset="-100" data-visibility="true">
+
 						{% thumbnail p.image "370x200" crop="center" as im %}
 							<img src="{{ im.url }}" alt="{{ p.title|striptags }}">
 						{% endthumbnail %}
+
 						<div><div>
-							<div class="zag">{{ p.title|safe }}</div>
-							<span class="more">Больше вариантов</span>
+							<div class="owl-carousel owl-theme" id="gall">
+									<div class="img">
+									<a class="fancybox" rel="group-works{{ p.id }}" href="{{ p.image.url }}">
+										{% thumbnail p.image "270x220" crop="center" as im %}
+											<img style="width: 100%; margin-bottom:30px;" src="{{ im.url }}" alt="{{ p.ln }} {{ p.fn }}">
+										{% endthumbnail %}
+									</a>
+									{% for i in p.product_images.all %}
+										<a class="fancybox" rel="group-works{{ p.id }}" href="{{ i.image.url }}"></a>
+										{% endfor %}
+								</div>
+							</div>
 							<div class="desc">
 								<div class="txt">
 									{{ p.description }}
 								</div>
-								<button class="button-yellow">Заказать {{ p.order_title }}</button>
+
+								<button class="button-yellow" onclick="$('#comment_singl').val('Заказ: '+'{{ p.title }}');">Заказать {{ p.order_title }}</button>
 							</div>
-						</div></div>
+						</div>
+
+						</div>
+<div class="zag" style="color: #000000;font-size: 15px;">{{ p.title|safe }} <br/> <span style="font-style: italic;font-weight: normal;font-size: 15px;">Цена: </span><span style="color: #729e0b;font-style: italic;font-weight: normal;font-size: 23px;">{{ p.price }} </span><span style="font-style: italic;font-weight: normal;font-size: 15px;">{{ p.unit }}</span>
+	<span><button class="button-yellow" style="width: 234px;height: 45px;" >Заказать</button></span></div>
 					</div>
 				{% endfor %}
 				</div>
@@ -286,13 +359,10 @@ function checkRes(width, height) {
 	<div id="footer">
 		<div class="w-center">
 			<div class="left">
-				<img src="{% static 'images/logo.png' %}" style="width: 65px;height: 58px;bottom: 5px;" class="logo" alt="#">
+				<a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" style="width: 65px;height: 58px;bottom: 5px;" class="logo" alt="#"></a>
 				<span class="name">{{ main.line_1|safe }}</span>
 			</div>
 			<div class="center">{{ main.phone }}</div>
-			<div class="reforge">
-				<a href="http://slify.co/" target="_blank">Разработка Landing Page</a>
-			</div>
 		</div>
 		<div class="bottom">
 			<div class="w-center">
@@ -301,7 +371,6 @@ function checkRes(width, height) {
 			</div>
 		</div>
 	</div>
-	<div class="clear"></div>
 
 	</div>
 
@@ -340,6 +409,7 @@ function checkRes(width, height) {
 				<form action="{% url 'book' %}" method="post">{% csrf_token %}
 					<input type="text" placeholder="Введите Ваше имя" value="" name="name" class="inps name required">
 					<input type="text" placeholder="Введите Ваш телефон" value="" name="phone" class="inps phone required phone_field">
+					<input type="hidden" value="" name="comment" id="comment_singl">
 					<input type="submit" value="Заказать" name="submit" class="button-yellow submit-button">
 					<input type="hidden" value="" name="form-title" class="form-title">
 				</form>
@@ -362,7 +432,7 @@ function checkRes(width, height) {
 
 	<!-- Скрипты -->
 	<script type="text/javascript" src="{% static 'js/all.scripts.js' %}"></script>
-	<script type="text/javascript" src="{% static 'js/scripts.js' %}?v=2"></script>
+	<script type="text/javascript" src="{% static 'js/scripts_category.js' %}?v=2"></script>
 
 </body>
 </html>

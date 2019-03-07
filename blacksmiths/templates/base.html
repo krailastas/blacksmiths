@@ -4,7 +4,7 @@
 <html lang="ru">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>{{ main.title }}</title>
+	<title>{{ main.title }} - blacksmiths-place.com</title>
 	<link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet" media="all">
 	<link href="{% static 'css/style-adaptive.css' %}" type="text/css" rel="stylesheet" media="all">
 	<link href="{% static 'css/style-animate.css' %}" type="text/css" rel="stylesheet" media="all">
@@ -303,13 +303,10 @@ function checkRes(width, height) {
 	<div id="footer">
 		<div class="w-center">
 			<div class="left">
-				<img src="{% static 'images/logo.png' %}" style="width: 65px;height: 58px;bottom: 5px;" class="logo" alt="#">
+				<a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" style="width: 65px;height: 58px;bottom: 5px;" class="logo" alt="#"></a>
 				<span class="name">{{ main.line_1|safe }}</span>
 			</div>
 			<div class="center">{{ main.phone }}</div>
-			<div class="reforge">
-				<a href="http://slify.co/" target="_blank">Разработка Landing Page</a>
-			</div>
 		</div>
 		<div class="bottom">
 			<div class="w-center">

@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.views.generic import TemplateView, FormView, DetailView
 
 from content.forms import BookForm
-from content.models import MainPages, Personal, Galery, Category
+from content.models import MainPages, Personal, Galery, Category, Product
 
 
 class BaseView(TemplateView):
@@ -40,5 +40,5 @@ class CategoryView(DetailView):
         context['main'] = MainPages.objects.all()[0]
         context['personal'] = Personal.objects.filter(is_active=True).order_by('order')[:4]
         context['galery'] = Galery.objects.filter(is_active=True).order_by('order')
-        context['category'] = Category.objects.filter(is_active=True).order_by('order')
+        context['product'] = Product.objects.filter(is_active=True, category=self.object).order_by('order')
         return context

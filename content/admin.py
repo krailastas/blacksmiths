@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from content.models import Category, Personal, Galery, MainPages, Book
+from content.models import Category, Personal, Galery, MainPages, Book, Product, Images
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -9,6 +9,22 @@ class CategoryAdmin(admin.ModelAdmin):
     )
     ordering = ('order', 'title')
     list_filter = ('is_active',)
+
+
+class ProductAdmin(admin.ModelAdmin):
+    list_display = (
+        'id', 'title', 'keywords', 'is_active', 'order', 'category'
+    )
+    ordering = ('order', 'title', 'category')
+    list_filter = ('is_active', 'category')
+
+
+class ImagesAdmin(admin.ModelAdmin):
+    list_display = (
+        'id', 'image', 'product', 'is_active', 'order'
+    )
+    ordering = ('order', 'product')
+    list_filter = ('is_active', 'product')
 
 
 class PersonalAdmin(admin.ModelAdmin):
@@ -36,6 +52,8 @@ class BookAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Galery, GaleryAdmin)
+admin.site.register(Product, ProductAdmin)
+admin.site.register(Images, ImagesAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Personal, PersonalAdmin)
 admin.site.register(MainPages)
