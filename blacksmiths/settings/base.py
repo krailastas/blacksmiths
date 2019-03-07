@@ -148,6 +148,8 @@ LOGGING = {
 }
 
 REDIS_HOST = os.environ.get('REDIS_HOST', 'localhost')
+TELEGRAM_TOKEN = os.environ.get('TELEGRAM_TOKEN')
+TELEGRAM_GROUP_ID = os.environ.get('TELEGRAM_GROUP_ID')
 
 BROKER_URL = 'redis://{}:6379/1'.format(REDIS_HOST)
 CELERY_RESULT_BACKEND = 'redis://{}:6379/1'.format(REDIS_HOST)

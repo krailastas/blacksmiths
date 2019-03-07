@@ -1,7 +1,7 @@
 # encoding: utf-8
 from .base import *  # NOQA
 
-ALLOWED_HOSTS = ['blacksmiths-place.com']
+ALLOWED_HOSTS = ['*']
 
 # MANAGER CONFIGURATION
 # https://docs.djangoproject.com/en/1.11/ref/settings/#admins

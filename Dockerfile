@@ -4,6 +4,7 @@ RUN apk update && apk add \
         postgresql-dev \
         python3-dev \
         gcc \
+        none \
         jpeg-dev \
         openntpd \
         zlib-dev \
