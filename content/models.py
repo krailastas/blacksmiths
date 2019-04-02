@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+from django.utils.text import slugify
 
 
 class MainPages(models.Model):
@@ -32,6 +34,9 @@ class Category(models.Model):
     description = models.TextField(max_length=500, blank=True, default='BlackSmiths - кованные изделия в Украине')
     is_active = models.BooleanField(default=True)
     order = models.IntegerField(default=1)
+
+    def get_url(self):
+        return reverse('category', kwargs={'slug': slugify(self.title,  allow_unicode=True), 'pk': self.id})
 
     def __str__(self):
         return self.title

@@ -48,6 +48,23 @@ function checkRes(width, height) {
 	//-->
 	</script>
 	<meta name="viewport" content="width=1170, user-scalable=yes">
+	<!-- Facebook Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1913066632357462');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1913066632357462&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
 </head>
 
 
@@ -98,7 +115,7 @@ function checkRes(width, height) {
 						</div>
 						<div class="privilege-item" id="privilege-item-3">
 							<span class="z">Надежно</span>
-							<span class="d">гарантия 30 лет</span>
+							<span class="d">гарантия 18 лет</span>
 						</div>
 					</div>
 				</div>
@@ -168,7 +185,7 @@ function checkRes(width, height) {
 			<h3 class="title-block">Каталог работ</h3>
 			<div class="material-items">
 				{% for p in category %}
-<a href="{% url 'category' p.id %}">
+<a href="{{ p.get_url }}">
 					<div class="material-item animate" data-animate="swing" data-duration="1.0s" data-delay="0.{{ forloop.counter }}s" data-offset="-100">
 						{% thumbnail p.image "370x200" crop="center" as im %}
 							<img src="{{ im.url }}" alt="{{ p.title|striptags }}">
@@ -209,7 +226,7 @@ function checkRes(width, height) {
 						{% thumbnail main.ceo_image "320x220" crop="center" as im %}
 							<img src="{{ im.url }}" alt="{{ main.ceo_name }}">
 						{% endthumbnail %}
-						<div class="circle"><div><div>Нами<br> смонтировано<br> более 154 000 м²<br> кованных изделий</div></div></div>
+						<div class="circle"><div><div>Нами<br> смонтировано<br> более 19 000 м²<br> кованных изделий</div></div></div>
 					</div>
 					<span class="name">{{ main.ceo_name }}</span>
 					<div class="position">{{ main.ceo_title|safe }}</div>
