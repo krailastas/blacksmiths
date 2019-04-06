@@ -44,25 +44,25 @@ $(document).ready(function() {
 		$('#'+modalID).arcticmodal({closeOnEsc:true,closeOnOverlayClick:true});
 	});
 
-	// Модальные окна (материалы)
-	$("#material-partners .material-item").click(function(e) {
-		e.preventDefault();
-		var that = $(this);
-		var modalTitle = that.find('.zag').text();
-		var modalContent = that.find('.desc').html();
-		$('#Modal-material .zagolovok').text(modalTitle);
-		$('#Modal-material .txt-wrap').html(modalContent);
-		$('#Modal-material').arcticmodal({closeOnEsc:true,closeOnOverlayClick:true});
-	});
-	$(".material-modal").on("click", '.button-yellow', function(e) {
-		e.preventDefault();
-		$.arcticmodal('close');
-		var that = $(this);
-		var modalTitle = that.text();
-		$('#Modal-material-single .form-title').val(modalTitle);
-		$('#Modal-material-single .submit-button').val(modalTitle);
-		$('#Modal-material-single').arcticmodal({closeOnEsc:true,closeOnOverlayClick:true});
-	});
+//	// Модальные окна (материалы)
+//	$("#material-partners .material-item").click(function(e) {
+//		e.preventDefault();
+//		var that = $(this);
+//		var modalTitle = that.find('.zag').text();
+//		var modalContent = that.find('.desc').html();
+//		$('#Modal-material .zagolovok').text(modalTitle);
+//		$('#Modal-material .txt-wrap').html(modalContent);
+//		$('#Modal-material').arcticmodal({closeOnEsc:true,closeOnOverlayClick:true});
+//	});
+//	$(".material-modal").on("click", '.button-yellow', function(e) {
+//		e.preventDefault();
+//		$.arcticmodal('close');
+//		var that = $(this);
+//		var modalTitle = that.text();
+//		$('#Modal-material-single .form-title').val(modalTitle);
+//		$('#Modal-material-single .submit-button').val(modalTitle);
+//		$('#Modal-material-single').arcticmodal({closeOnEsc:true,closeOnOverlayClick:true});
+//	});
 
 	// Услуги (смена картинок)
 	$('#uslugi .item > span').click(function(e) {
