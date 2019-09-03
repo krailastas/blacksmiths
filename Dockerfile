@@ -25,4 +25,4 @@ RUN if [ -s requirements.txt ]; then pip install -r requirements.txt; fi
 EXPOSE 8094
 VOLUME /app/blacksmiths/assets
 VOLUME /app/blacksmiths/media
-ENTRYPOINT ["/usr/local/bin/uwsgi", "--ini", "/app/uwsgi.ini"]
+ENTRYPOINT ["sh", "entrypoint.sh"]
