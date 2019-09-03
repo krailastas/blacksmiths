@@ -22,7 +22,7 @@ ENV PYTHONUNBUFFERED 1
 ADD . /app/
 
 RUN if [ -s requirements.txt ]; then pip install -r requirements.txt; fi
-EXPOSE 8000
+EXPOSE 8094
 VOLUME /app/blacksmiths/assets
 VOLUME /app/blacksmiths/media
-ENTRYPOINT ["/usr/local/bin/gunicorn", "-b", "0.0.0.0:8000", "blacksmiths.wsgi:application"]
+ENTRYPOINT ["/usr/local/bin/gunicorn", "-b", "0.0.0.0:8094", "blacksmiths.wsgi:application"]
