@@ -25,4 +25,4 @@ RUN if [ -s requirements.txt ]; then pip install -r requirements.txt; fi
 EXPOSE 8094
 VOLUME /app/blacksmiths/assets
 VOLUME /app/blacksmiths/media
-ENTRYPOINT ["sh", "entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/gunicorn", "blacksmiths.wsgi:application"]
