@@ -3,6 +3,6 @@ bpython==0.16
 psycopg2==2.7.4
 Pillow==5.2.0
 requests[socks]
-celery==3.1.25
+celery==5.2.2
 redis==2.10.6
 sorl-thumbnail==12.5.0
